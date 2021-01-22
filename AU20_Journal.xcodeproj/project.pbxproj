@@ -15,6 +15,8 @@
 		636E0FD625BAC81F005A438C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 636E0FD425BAC81F005A438C /* LaunchScreen.storyboard */; };
 		636E0FE125BAC81F005A438C /* AU20_JournalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0FE025BAC81F005A438C /* AU20_JournalTests.swift */; };
 		636E0FEC25BAC81F005A438C /* AU20_JournalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0FEB25BAC81F005A438C /* AU20_JournalUITests.swift */; };
+		636E0FFD25BACD1F005A438C /* JournalEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E0FFC25BACD1F005A438C /* JournalEntry.swift */; };
+		636E100725BACE6A005A438C /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 636E100625BACE6A005A438C /* Journal.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,8 @@
 		636E0FE725BAC81F005A438C /* AU20_JournalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AU20_JournalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		636E0FEB25BAC81F005A438C /* AU20_JournalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AU20_JournalUITests.swift; sourceTree = "<group>"; };
 		636E0FED25BAC81F005A438C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		636E0FFC25BACD1F005A438C /* JournalEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalEntry.swift; sourceTree = "<group>"; };
+		636E100625BACE6A005A438C /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,10 @@
 		636E0FC825BAC81C005A438C /* AU20_Journal */ = {
 			isa = PBXGroup;
 			children = (
+				636E100225BACDF9005A438C /* View */,
+				636E100125BACD27005A438C /* Model */,
 				636E0FC925BAC81C005A438C /* AppDelegate.swift */,
 				636E0FCB25BAC81C005A438C /* SceneDelegate.swift */,
-				636E0FCD25BAC81C005A438C /* ContentView.swift */,
 				636E0FCF25BAC81F005A438C /* Assets.xcassets */,
 				636E0FD425BAC81F005A438C /* LaunchScreen.storyboard */,
 				636E0FD725BAC81F005A438C /* Info.plist */,
@@ -134,6 +139,23 @@
 				636E0FED25BAC81F005A438C /* Info.plist */,
 			);
 			path = AU20_JournalUITests;
+			sourceTree = "<group>";
+		};
+		636E100125BACD27005A438C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				636E0FFC25BACD1F005A438C /* JournalEntry.swift */,
+				636E100625BACE6A005A438C /* Journal.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		636E100225BACDF9005A438C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				636E0FCD25BAC81C005A438C /* ContentView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +289,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				636E0FCA25BAC81C005A438C /* AppDelegate.swift in Sources */,
+				636E100725BACE6A005A438C /* Journal.swift in Sources */,
 				636E0FCC25BAC81C005A438C /* SceneDelegate.swift in Sources */,
+				636E0FFD25BACD1F005A438C /* JournalEntry.swift in Sources */,
 				636E0FCE25BAC81C005A438C /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
