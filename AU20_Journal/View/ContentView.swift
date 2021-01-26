@@ -17,7 +17,7 @@ struct ContentView: View {
             List() {
                 ForEach(journal.entries) { entry in
                     NavigationLink(
-                        destination: JournalEntryView(entry: entry)) {
+                        destination: JournalEntryView(journal: journal, entry: entry)) {
                             RowView(entry: entry)
                         }
                 }
@@ -25,8 +25,9 @@ struct ContentView: View {
                  journal.entries.remove(atOffsets: indexSet)
                 })
             }
+            .navigationBarTitle("Journal")
             .navigationBarItems(trailing: NavigationLink(
-                                    destination: JournalEntryView(),
+                                    destination: JournalEntryView(journal: journal),
                                     label: {
                                         Image(systemName: "plus.circle")
                                     }))
@@ -52,7 +53,7 @@ struct RowView : View {
         HStack {
             Text(date)
             Spacer()
-            Text(entry.content)
+            Text(entry.content.prefix(10) + "...")
         }
     }
 }

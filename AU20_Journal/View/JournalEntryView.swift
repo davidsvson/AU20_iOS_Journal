@@ -10,7 +10,10 @@ import SwiftUI
 
 struct JournalEntryView : View {
     
+    var journal : Journal
     var entry : JournalEntry? = nil
+    private let defaultContent = "Today I..."
+    
     @State private var content : String = ""
     
     
@@ -31,17 +34,46 @@ struct JournalEntryView : View {
         
         VStack {
             Text(date)
-            TextEditor(text: $content )
+            TextEditor(text: $content ).onTapGesture {
+                clearText()
+            }
+        }.onAppear() {
+           setContent()
         }.navigationBarItems(trailing: Button("Save") {
             saveEntry()
         } )
         
     }
 
+    private func clearText() {
+        if(entry == nil) {
+            content = ""
+        }
+        
+    }
+    
+    
+    private func setContent() {
+        if let content = entry?.content {
+            self.content = content
+        } else {
+            self.content = defaultContent
+        }
+    }
+    
+    
     private func saveEntry() {
-        print("Saving: \(content)")
-        
-        
+        // update existing entry in Journal
+        if let entry = entry {
+            if let index = journal.entries.firstIndex(of: entry) {
+                journal.entries[index].content = self.content
+            }
+        }
+        // add new entry to journal
+        else {
+            let newEntry = JournalEntry(content: content)
+            journal.entries.append(newEntry)
+        }
     }
 }
 
@@ -52,7 +84,7 @@ struct JournalEntryView : View {
 
 struct JournalEntryView_Previews: PreviewProvider {
     static var previews: some View {
-        JournalEntryView(entry: JournalEntry(content: "Bra dag"))
+        JournalEntryView(journal: Journal(), entry: JournalEntry(content: "Bra dag"))
     }
 }
 
