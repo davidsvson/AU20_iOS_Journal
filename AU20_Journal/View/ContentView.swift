@@ -13,23 +13,18 @@ struct ContentView: View {
     
     var body: some View {
         
-        VStack {
+        NavigationView {
             List() {
                 ForEach(journal.entries) { entry in
-                    RowView(entry: entry)
+                    NavigationLink(
+                        destination: JournalEntryView(entry: entry)) {
+                            RowView(entry: entry)
+                        }
                 }
                 .onDelete(perform: { indexSet in
                  journal.entries.remove(atOffsets: indexSet)
                 })
-                
             }
-            
-            Button(action: {
-                journal.entries.append(JournalEntry(content: "Ny dag nya möjligheter"))
-            }, label: {
-                Text("ADD")
-            })
-            
         }
     }
 }
