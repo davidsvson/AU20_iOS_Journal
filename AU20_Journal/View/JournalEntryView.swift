@@ -10,15 +10,45 @@ import SwiftUI
 
 struct JournalEntryView : View {
     
-    var entry : JournalEntry
+    var entry : JournalEntry? = nil
+    @State private var content : String = ""
+    
+    
+    var date : String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        var date = ""
+        
+        if let entry = entry {
+            date = formatter.string(from: entry.date)
+        } else {
+            date = formatter.string(from: Date())
+        }
+        return date
+    }
     
     var body: some View {
         
-        Text(entry.content)
+        VStack {
+            Text(date)
+            TextEditor(text: $content )
+        }.navigationBarItems(trailing: Button("Save") {
+            saveEntry()
+        } )
         
     }
 
+    private func saveEntry() {
+        print("Saving: \(content)")
+        
+        
+    }
 }
+
+
+
+
+
 
 struct JournalEntryView_Previews: PreviewProvider {
     static var previews: some View {

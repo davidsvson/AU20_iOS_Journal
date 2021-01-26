@@ -25,7 +25,13 @@ struct ContentView: View {
                  journal.entries.remove(atOffsets: indexSet)
                 })
             }
+            .navigationBarItems(trailing: NavigationLink(
+                                    destination: JournalEntryView(),
+                                    label: {
+                                        Image(systemName: "plus.circle")
+                                    }))
         }
+        
     }
 }
 
