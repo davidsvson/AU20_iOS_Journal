@@ -10,7 +10,9 @@ import SwiftUI
 
 struct JournalEntryView : View {
     
-    @EnvironmentObject var journal : Journal  
+    @EnvironmentObject var journal : Journal
+    @Environment(\.presentationMode) var presentationMode
+    
     @State var entry : JournalEntry? = nil
     private let defaultContent = "Today I..."
     
@@ -41,6 +43,7 @@ struct JournalEntryView : View {
            setContent()
         }.navigationBarItems(trailing: Button("Save") {
             saveEntry()
+            presentationMode.wrappedValue.dismiss()
         } )
         
     }
