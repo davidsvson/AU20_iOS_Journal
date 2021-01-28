@@ -10,8 +10,8 @@ import SwiftUI
 
 struct JournalEntryView : View {
     
-    var journal : Journal
-    var entry : JournalEntry? = nil
+    @EnvironmentObject var journal : Journal  
+    @State var entry : JournalEntry? = nil
     private let defaultContent = "Today I..."
     
     @State private var content : String = ""
@@ -67,24 +67,21 @@ struct JournalEntryView : View {
         if let entry = entry {
             if let index = journal.entries.firstIndex(of: entry) {
                 journal.entries[index].content = self.content
+                self.entry?.content = self.content
             }
         }
         // add new entry to journal
         else {
             let newEntry = JournalEntry(content: content)
             journal.entries.append(newEntry)
+            entry = newEntry
         }
     }
 }
 
-
-
-
-
-
-struct JournalEntryView_Previews: PreviewProvider {
-    static var previews: some View {
-        JournalEntryView(journal: Journal(), entry: JournalEntry(content: "Bra dag"))
-    }
-}
+//struct JournalEntryView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        JournalEntryView(journal: Journal(), entry: JournalEntry(content: "Bra dag"))
+//    }
+//}
 

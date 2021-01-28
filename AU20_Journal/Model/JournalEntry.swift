@@ -13,6 +13,7 @@ struct JournalEntry : Identifiable, Equatable {
     var content : String
     var date : Date = Date()
     
-    
-    
+//    static func ==(lhs: JournalEntry, rhs: JournalEntry) -> Bool {
+//        return lhs.id == rhs.id
+//    }
 }

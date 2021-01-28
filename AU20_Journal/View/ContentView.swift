@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var journal = Journal()
-    
+    @EnvironmentObject var journal : Journal
     
     var body: some View {
         
@@ -17,7 +16,7 @@ struct ContentView: View {
             List() {
                 ForEach(journal.entries) { entry in
                     NavigationLink(
-                        destination: JournalEntryView(journal: journal, entry: entry)) {
+                        destination: JournalEntryView(entry: entry) ) {
                             RowView(entry: entry)
                         }
                 }
@@ -27,7 +26,7 @@ struct ContentView: View {
             }
             .navigationBarTitle("Journal")
             .navigationBarItems(trailing: NavigationLink(
-                                    destination: JournalEntryView(journal: journal),
+                                    destination: JournalEntryView(),
                                     label: {
                                         Image(systemName: "plus.circle")
                                     }))
